@@ -21,15 +21,14 @@ quote = st.text_area(
 )
 
 if st.button("Decode Quote") and api_key:
-    prompt = f"""Extract the following fields from this broker message, mandatorily fill all fields very diligently:
-
+    prompt = f"""Extract the following fields from this broker message:
 - Vessel name
 - Vessel type
 - DWT (if missing, infer approximate from vessel type)
 - Open port
 - Laycan (date range if possible, else say 'Not specified')
 - Route (origin to destination)
-- Cargo
+- Cargo (if any)
 - Redelivery port
 - Daily rate (USD)
 - Charterer (if any)
