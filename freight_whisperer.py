@@ -8,7 +8,7 @@ st.set_page_config(page_title="Freight Whisperer")
 
 # App Title
 st.title("🚢 Freight Whisperer")
-st.subheader("Paste a broker message, get structured trade info + price signal")
+st.subheader("Paste a broker message, get structured trade info + price signal ; Remember Deal Sentiment score (0 to 1 scale, where closer to 1 means very bullish, closer to 0 means very bearish")
 
 # Gemini API Key
 api_key = "AIzaSyBtvAp7zzsKXDwZKgzB4HyXii4qYTBJGXc"
@@ -21,7 +21,7 @@ quote = st.text_area(
 )
 
 if st.button("Decode Quote") and api_key:
-    prompt = f"""Extract the following fields from this broker message, try to be precise and careful:
+    prompt = f"""Extract the following fields from this broker message, try to be precise and careful for deal sentiment score, so that it is consistent:
 
 - Deal Sentiment score (0 to 1 scale, where closer to 1 means very bullish, closer to 0 means very bearish)
 - Vessel name
@@ -57,7 +57,7 @@ Return result as JSON with keys: deal_sentiment_score, vessel_name, vessel_type,
         ]
     }
 
-    with st.spinner("💬 Sending request to Gemini.. \n Remember Deal Sentiment score (0 to 1 scale, where closer to 1 means very bullish, closer to 0 means very bearish)"):
+    with st.spinner("💬 Sending request to Gemini.."):
         try:
             response = requests.post(url, headers=headers, data=json.dumps(data))
             if response.status_code == 200:
