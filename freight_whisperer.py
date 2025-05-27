@@ -21,7 +21,8 @@ quote = st.text_area(
 )
 
 if st.button("Decode Quote") and api_key:
-    prompt = f"""Extract the following fields from this broker message, mandatorily fill all very diligently:
+    prompt = f"""Extract the following fields from this broker message, mandatorily fill all fields very diligently:
+    
 - Sentiment Score (0 to 1 scale, where closer to 1 means very bullish, closer to 0 means very bearish)
 - Vessel name
 - Vessel type
