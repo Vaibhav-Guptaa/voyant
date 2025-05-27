@@ -57,7 +57,7 @@ Return result as JSON with keys: deal_sentiment_score, vessel_name, vessel_type,
         ]
     }
 
-    with st.spinner("💬 Sending request to Gemini..."):
+    with st.spinner("💬 Sending request to Gemini.. \n Remember Deal Sentiment score (0 to 1 scale, where closer to 1 means very bullish, closer to 0 means very bearish)"):
         try:
             response = requests.post(url, headers=headers, data=json.dumps(data))
             if response.status_code == 200:
