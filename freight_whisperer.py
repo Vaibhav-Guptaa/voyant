@@ -22,8 +22,7 @@ quote = st.text_area(
 
 if st.button("Decode Quote") and api_key:
     prompt = f"""Extract the following fields from this broker message, mandatorily fill all fields very diligently:
-    
-- deal_sentiment_score (0 to 1 scale, where closer to 1 means very bullish, closer to 0 means very bearish)
+
 - Vessel name
 - Vessel type
 - DWT (if missing, infer approximate from vessel type)
@@ -42,7 +41,7 @@ If fields are missing, try to infer or explain why not extracted.
 
 Message: {quote}
 
-Return result as JSON with keys: deal_sentiment_score, vessel_name, vessel_type, dwt, open_port, laycan, route, cargo, redelivery_port, rate_usd_day, charterer, sentiment, and confidence_scores (dict).
+Return result as JSON with keys: vessel_name, vessel_type, dwt, open_port, laycan, route, cargo, redelivery_port, rate_usd_day, charterer, sentiment, and confidence_scores (dict).
 """
 
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
