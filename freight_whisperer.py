@@ -21,14 +21,15 @@ quote = st.text_area(
 )
 
 if st.button("Decode Quote") and api_key:
-    prompt = f"""Extract the following fields from this broker message:
+    prompt = f"""Extract the following fields from this broker message, mandatorily fill all very diligently:
+- Sentiment Score (0 to 1 scale, where closer to 1 means very bullish, closer to 0 means very bearish)
 - Vessel name
 - Vessel type
 - DWT (if missing, infer approximate from vessel type)
 - Open port
 - Laycan (date range if possible, else say 'Not specified')
 - Route (origin to destination)
-- Cargo (if any)
+- Cargo
 - Redelivery port
 - Daily rate (USD)
 - Charterer (if any)
